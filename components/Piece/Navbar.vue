@@ -79,6 +79,12 @@ const carBurger = ref(false)
 
 
 <style lang="scss" scoped>
+.navbar-link.router-link-active,
+.navbar-link.router-link-exact-active {
+    color: var(--color-c) !important;
+    font-weight: 700;
+}
+
 .navbar-container {
     
   background: white; // 🔲 Фон — белый
@@ -141,7 +147,7 @@ const carBurger = ref(false)
     gap: 20px;
     flex-wrap: wrap;
     @media screen and (max-width: 767px) {
-        display: none; // ⛔️ Скрыть список меню на экранах до 767px
+        display: none;
     }
     
 

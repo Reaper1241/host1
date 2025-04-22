@@ -1,5 +1,6 @@
 <script setup>
-const currentSlide = ref(0)
+
+import  SvgStrelka  from '@/components/Svg/Strelka.vue';
 const props = defineProps(['images'])
 const breakpoints = {
     0: {
@@ -9,7 +10,7 @@ const breakpoints = {
         itemsToShow: 1,
     },
 }
-
+const carousel = ref(null)
 function slideTo(index) {
     currentSlide.value = index
 }
@@ -18,8 +19,8 @@ function slideTo(index) {
 
 <template>
     <div class="special__slider" v-if="props.images.length">
-        <Carousel id="gallery" :items-to-show="1" :wrap-around="false" v-model="currentSlide" :mouseDrag="false"
-            :breakpoints="breakpoints">
+        <Carousel  id="gallery" :items-to-show="1" :wrap-around="false" v-model="currentSlide" :mouseDrag="false"
+            :breakpoints="breakpoints" ref="carousel">
             <Slide v-for="(slide, index) in props.images" :key="index">
                 <div class="carousel__item">
                     <div class="slide">
@@ -31,8 +32,16 @@ function slideTo(index) {
             </Slide>
 
             <template #addons>
-                <Pagination/>
-                <Navigation />
+                <Pagination />
+                <!-- кастомные кнопки -->
+                <div class="custom-nav">
+                    <button class="custom-nav__btn" @click="$refs.carousel.prev()">
+                        <SvgStrelka class="custom-nav__arrow custom-nav__prev"/>
+                    </button>
+                    <button class="custom-nav__btn" @click="$refs.carousel.next()">
+                        <SvgStrelka class="custom-nav__arrow custom-nav__next flipped"/>
+                    </button>
+                </div>
             </template>
         </Carousel>
     </div>
@@ -42,13 +51,71 @@ function slideTo(index) {
 </template>
 
 <style scoped lang="scss">
+.custom-nav {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 45%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  padding: 0 30px;
+  z-index: 100;
+    
+  @media screen and (max-width: 1000px) {
+    padding: 0 40px;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 0 20px;
+  }
+}
+
+.custom-nav__arrow {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+    // transform: scale(1.1);
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: #000; // или можно использовать currentColor
+  }
+}
+.custom-nav__prev{
+    transform: scaleX(-1);
+}
+
+.custom-nav__next.flipped {
+  transform: scaleX(1); // отзеркаливаем вторую стрелку
+}
+
+
+
+.carousel__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    border-radius: 10px; 
+}
 .thumbnails li {
     margin: 10px;
 }
 
 .carousel__item {
     width: 100%;
-   max-height: 450px;
+    max-height: 450px;
+    border-radius: 10px !important; /* Добавьте это */
+    overflow: hidden; /* Это важно, чтобы скругление работало */
 }
 
 .special__slider {
@@ -58,7 +125,7 @@ function slideTo(index) {
     gap: 10px;
     overflow: hidden;
     padding: 0;
-
+    
     @media screen and (max-width: 1150px) {
         position: relative;
         display: block;
@@ -141,4 +208,6 @@ function slideTo(index) {
     width: 40%;
     height: 20px;
 }
+
+
 </style>

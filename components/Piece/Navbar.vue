@@ -201,6 +201,7 @@ const carBurger = ref(false)
                     transition: all 0.3s;
                     box-shadow: 0 1px 11px 0 #414e5b33;
                     color: white;
+                    border-radius: 8px;
 
                     li {
                         background: transparent;
@@ -209,7 +210,6 @@ const carBurger = ref(false)
                     .navbar-link__cars {
                         padding: 15px;
                         border-bottom: 1px solid #f7f7f7;
-
 
                         @media screen and (max-width:767px) {
                             border: none;

@@ -48,8 +48,12 @@ const complectation = car.value.complectation
 </template>
 
 <style scoped lang="scss">
+
 .com-info__item {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 .com-info__title-mini {
     margin-bottom: 5px;
@@ -125,11 +129,12 @@ h3 {
         content: "";
         display: block;
         position: absolute;
-        top: 5px;
+        top: 7px;
         left: 0;
-        width: 3px;
-        height: 3px;
-        background-color: var(--color-c);
+        width: 5px;
+        height: 5px;
+        background-color: black;
+        border-radius: 50%;
       }
     }
 }

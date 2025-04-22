@@ -151,7 +151,7 @@ watch(selectedIndex, (newIndex) => {
                 </div>
                 <div class="conditions-benefit">
                     <p>
-                        Ваша выгода до {{ makeSpaces(modelSale)  }} руб
+                        Ваша выгод11а до {{ makeSpaces(modelSale)  }} руб
                     </p>
                 </div>
             </div>

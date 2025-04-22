@@ -116,7 +116,7 @@ const infoGos = ref({title:`Госпрограмма`, content:`<p>Госпро�
                                     <p>{{ makeSpaces(tradeSale) }} руб</p>
                                     <button class="services-sale__icon-i" 
                                     @click.stop="modalShow(), content = infoTrade">
-                                        <SvgInfo/>
+                                        <!-- <SvgInfo/> -->
                                     </button>
                                     <Teleport to="body">
                                         <div v-if="isOpen">
@@ -142,7 +142,7 @@ const infoGos = ref({title:`Госпрограмма`, content:`<p>Госпро�
                                 <p>{{ makeSpaces(creditSale) }} руб</p>
                                 <button class="services-sale__icon-i" 
                                     @click.stop="modalShow(), content = infoCredit">
-                                        <SvgInfo/>
+                                        <!-- <SvgInfo/> -->
                                     </button>
                                     <Teleport to="body">
                                         <div v-if="isOpen">
@@ -165,7 +165,7 @@ const infoGos = ref({title:`Госпрограмма`, content:`<p>Госпро�
                                 <p>{{ makeSpaces(salonSale) }} руб</p>
                                 <button class="services-sale__icon-i" 
                                     @click.stop="modalShow(), content = infoGos">
-                                        <SvgInfo/>
+                                        <!-- <SvgInfo/> -->
                                     </button>
                                     <Teleport to="body">
                                         <div v-if="isOpen">
@@ -207,13 +207,14 @@ const infoGos = ref({title:`Госпрограмма`, content:`<p>Госпро�
             padding: 10px;
             background-color: #fff;
             border: 1px solid #fff;
+            border-radius: 8px;
             cursor: pointer;
             transition: background 0.3s ease-in-out 0s;
             -ms-flex-wrap: wrap;
             flex-wrap: wrap;
             -ms-flex-pack: justify;
             display: flex;
-            justify-content: space-between; 
+            flex-direction: column;
 
             
             
@@ -252,9 +253,9 @@ const infoGos = ref({title:`Госпрограмма`, content:`<p>Госпро�
                         content: "";
                         position: absolute;
                         top: 9px;
-                        left: 6px;
+                        left: 8px;
                         transition: 0.2s ease-out;
-                        width: 12px;
+                        width: 8px;
                         height: 2px;
                         border-radius: 2px;
                         background: #fff;
@@ -266,9 +267,9 @@ const infoGos = ref({title:`Госпрограмма`, content:`<p>Госпро�
                         content: "";
                         position: absolute;
                         top: 9px;
-                        left: 6px;
+                        left: 8px;
                         transition: 0.2s ease-out;
-                        width: 12px;
+                        width: 8px;
                         height: 2px;
                         border-radius: 2px;
                         background: #fff;
@@ -295,19 +296,22 @@ const infoGos = ref({title:`Госпрограмма`, content:`<p>Госпро�
                     }
                 }
                 .money {
-                    font-size: 14px;
+                    font-size: 16px;
                     font-weight: 500;
                     color: var(--dark-grey);
                     margin-top: 5px;
                     display: flex;
                     flex-wrap: nowrap;
                     align-items: center;
+                    padding-left: 30px;
+                    padding-bottom: 5px;
                 }
 
                 .text {
                     color: var(--dark-grey);
-                    font-size: 14px;
-
+                    font-size: 12px;
+                    padding-left: 30px;
+                    padding-bottom: 10px;
                     span{
                         color: var(--color-c);
                     }
@@ -405,8 +409,9 @@ const infoGos = ref({title:`Госпрограмма`, content:`<p>Госпро�
             flex-basis: 25%;
             .complectations-calculator__text_total {
                 display: flex;
+                align-items: center;
                 flex-wrap: nowrap;
-
+                
                 @media screen and (max-width:1000px) {
                     flex-wrap: wrap;
                 }

@@ -1,4 +1,5 @@
 <script setup>
+import  SvgStar  from '@/components/Svg/Star.vue';
 import { options,  apiForm, name } from "@/constants/";
 
 import { vMaska } from "maska/vue"
@@ -130,21 +131,33 @@ watch(() => creditStore.carNew, () => {
         </div>
 
         <div class="form__form-block">
-            <div class="car__choice" type="button" @click="creditStore.modalShow()">
-
-                <div class="car__choice-wrapper" :class="{ 'car': creditStore.carNew?.price }"
+            <div class="car__choice" type="button">
+                <div class="car__choice-wrapper" 
                     >
-                    <span class="title" :class="{ 'car': creditStore.carNew?.price }">
-                        Выберите новый авто
-                    </span>
-                    <div class="value" v-if="creditStore.carNew">
+                    <div class="car-choice-row">
                         <div class="value-name">
                             {{
-                                creditStore.carNew?.price ? cleanUpTitle(creditStore.carNew.brand, creditStore.carNew.model,
+                            creditStore.carNew?.brand
+                                ? cleanUpTitle(
+                                    creditStore.carNew.brand,
+                                    creditStore.carNew.model,
                                     creditStore.carNew.modification,
-                                    creditStore.carNew.complectation) : ''
+                                    creditStore.carNew.complectation
+                                )
+                                : ''
                             }}
                         </div>
+                        <button
+                            type="button"
+                            class="car-select-button"
+                            @click="creditStore.modalShow()"
+                        >
+                            Выбрать авто
+                        </button>
+                    </div>
+
+                    <div class="value" v-if="creditStore.carNew">
+
                         <div class="value-block">
                             <div class="image">
                                 <img
@@ -166,6 +179,7 @@ watch(() => creditStore.carNew, () => {
 
             </div>
         </div>
+
 
         <!-- <div class="form__form-block" :class="{ 'disabled': creditStore.carNew == 0 }">
             <FormPieceRangeSliderTime @timeListOutput="timeListOutput" />
@@ -192,7 +206,7 @@ watch(() => creditStore.carNew, () => {
             <p>Ваши данные</p>
 
             <div class="base-input">
-                <input :class="{ 'is-invalid': nameError }" type="text" name="name" placeholder="Имя"
+                <input :class="{ 'is-invalid': nameError }" type="text" name="name" placeholder="ФИО"
                     v-model="nameValue" autocomplete="off" v-maska="name" class="form-input">
             </div>
 
@@ -203,7 +217,7 @@ watch(() => creditStore.carNew, () => {
 
             <div class="base-input">
                 <input :class="{ 'is-invalid': phoneError }" type="tel" name="contactPhone"
-                    placeholder="+7 (___) ___-__-__" autocomplete="off" v-maska="options" v-model="phoneValue"
+                    placeholder="Номер телефона" autocomplete="off" v-maska="options" v-model="phoneValue"
                     class="form-input">
             </div>
 
@@ -213,6 +227,7 @@ watch(() => creditStore.carNew, () => {
                 {{ formSend ? 'Заявка отправлена!' : 'Оставить заявку' }}
             </button>
             <p class="form-text">
+                <SvgStar/>
                 Кредит предоставляется только гражданам РФ						
             </p>
         </div>
@@ -221,14 +236,20 @@ watch(() => creditStore.carNew, () => {
 
 <style scoped lang="scss">
 .form__form-content {
+
     display: flex;
     flex-direction: column;
     width: 100%;
     position: relative;
     gap: 5px;
-
-    @media screen and (max-width: 540px) {
+    
+    @media screen and (max-width: 767px) {
+        width: none;
+        max-width: 500px;
+    }
+    @media screen and (max-width: 570px) {
         gap: 10px;
+        max-width: 300px;
     }
 
     .form__form-block {
@@ -236,29 +257,27 @@ watch(() => creditStore.carNew, () => {
         flex-direction: column;
         gap: 10px;
         position: relative;
-
-        p{
-            text-align: left;
-        }
+        
         .car__choice {
-            border: var(--border);
+
             height: 100%;
             width: 100%;
-            border: var(--border);
+
         //    border-radius: var(--border-small-radius);
             transition: 0.3s;
             background: white;
             color: var(--main-black);
             cursor: pointer;
             display: flex;
-
+            
             position: relative;
             overflow: hidden;
 
             .car__choice-wrapper {
                 height: 100%;
-                padding: 20px 15px;
+                padding: 20px 0;
                 transition: 0.3s;
+                width: 100%;
                 .value {
                     display: flex;
                     gap: 10px;
@@ -377,6 +396,7 @@ watch(() => creditStore.carNew, () => {
             margin: 10px 0;
             flex-wrap: wrap;
             gap: 10px;
+            margin-bottom: 30px;
 
             @media screen and (max-width: 540px) {
                 align-items: center;
@@ -421,11 +441,17 @@ watch(() => creditStore.carNew, () => {
 
         .form__form-submit {
         //    border-radius: var(--border-small-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 15px;
-            background: var( --color-c);
+            border-radius: 5px;
+            background: #D2122B;
             color: var(--bg-light);
-            font-weight: bold;
+            font-weight: 300;
             transition: 0.3s;
+            font-size: 12px;
+            height: 19px;
             // border: 3px solid var(--main-color);
 
             &:hover {
@@ -628,22 +654,93 @@ watch(() => creditStore.carNew, () => {
     background: rgba(95, 95, 95, 0.582);
     border-radius: 5px;
 }
-.form-text{
+  .form-text {
     color: #767676;
-    padding-left: 20px;
-    position: relative;
     font-size: 14px;
     margin-top: 15px;
-    text-align: left;
-    &::before{
-      content: "*";
-      font-size: 16px;
-      font-weight: 700;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      color: red;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px; // расстояние между звездочкой и текстом
+    padding-left: 0; // убираем отступ, чтобы выровнять по левому краю
+    margin-left: 0;  // если вдруг был
+    width: 100%; // чтобы занять всю ширину
+
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: red;
+      margin-top: 2px;
+      flex-shrink: 0;
     }
   }
+
+  .error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+  display: block;
+}
+.form-input {
+  height: 48px; // больше высота
+  font-size: 14px; // крупнее текст
+  padding: 0 15px;
+  border-radius: 8px; // скругление углов
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  transition: 0.3s ease;
+
+  &:focus {
+    border-color: var(--color-c); // или свой цвет
+    outline: none;
+  }
+
+  &.is-invalid {
+    border-color: #D2122B;
+  }
+}
+.is-invalid {
+  border-color: #D2122B !important;
+}
+.car-choice-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.value-name {
+  flex: 1;
+  padding: 10px 12px;
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 38px;
+    min-width: 11vw;
+    width: 120%;
+  @media screen and (max-width: 540px) {
+    width: 100%;
+  }
+}
+
+.car-select-button {
+  background-color: #d2122b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #aa0f22;
+  }
+}
 </style>

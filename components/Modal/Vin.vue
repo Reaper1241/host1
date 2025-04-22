@@ -48,7 +48,7 @@ function modalShow() {
                         </div>
                         <div class="modal__head-info">
                             <h3 class="modal__subtitle">
-                                Технические характеристики:
+                                Технические харак11теристики:
                             </h3>
                             <ul class="modal__params-list">
                                 <li class="modal__params-item">

@@ -18,52 +18,53 @@ function modalShow() {
         <div class="container">
             <div class="contact__content">
                 <div class="contact__map">
-                    <div class="contact__map-data">
-                        <div class="contact__map-data-item">
-                            <div class="item__icon"><i class="fa-solid fa-clock"></i></div>
-                            <div class="item__text">
-                                <p>
-                                    Часы работы:
-                                </p>
-                                <p>
-                                    {{ appStore.workingHours }}
-                                </p>
+                    <div class="contact__map-wrapper">
+                        <div class="contact__map-data">
+                            <div class="contact__map-data-item">
+                                <div class="item__icon"><i class="fa-solid fa-clock"></i></div>
+                                <div class="item__text">
+                                    <p>
+                                        Часы работы:
+                                    </p>
+                                    <p>
+                                        {{ appStore.workingHours }}
+                                    </p>
+
+                                </div>
 
                             </div>
+                            <div class="contact__map-data-item">
+                                <div class="item__icon"> <i class="fa-solid fa-phone"></i></div>
+                                <div class="item__text">
+                                    <p>
+                                        Телефон:
+                                    </p>
+                                    <a @click="modalShow(), car ? yandexEcommerce('add', car) : null" class="phone__button">
+                                        {{ appStore.phone }}
+                                    </a>
+                                    <a :href="`tel:+${appStore.clearPhone}`" class="mobile">
+                                        {{ appStore.phone }}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="contact__map-data-item">
+                                <div class="item__icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <div class="item__text">
+                                    <p>
+                                        Адрес:
+                                    </p>
+                                    <p>
+                                        {{ appStore.address }}
+                                    </p>
 
+                                </div>
+                            </div>
                         </div>
-                        <div class="contact__map-data-item">
-                            <div class="item__icon"> <i class="fa-solid fa-phone"></i></div>
-                            <div class="item__text">
-                                <p>
-                                    Телефон:
-                                </p>
-                                <a @click="modalShow(), car ? yandexEcommerce('add', car) : null" class="phone__button">
-                                    {{ appStore.phone }}
-                                </a>
-                                <a :href="`tel:+${appStore.clearPhone}`" class="mobile">
-                                    {{ appStore.phone }}
-                                </a>
-                            </div>
-                        </div>
-                        <div class="contact__map-data-item">
-                            <div class="item__icon"><i class="fa-solid fa-location-dot"></i></div>
-                            <div class="item__text">
-                                <p>
-                                    Адрес:
-                                </p>
-                                <p>
-                                    {{ appStore.address }}
-                                </p>
-
-                            </div>
+                        <div class="contact__map-map">
+                            <iframe :src="`${appStore.yandexMap}`" width="100%" height="400" frameborder="0"
+                                title="yandex карта"></iframe>
                         </div>
                     </div>
-                    <div class="contact__map-map">
-                        <iframe :src="`${appStore.yandexMap}`" width="100%" height="400" frameborder="0"
-                            title="yandex карта"></iframe>
-                    </div>
-
                 </div>
                 <!-- <div class="contact__form">
                      <div class="contact__form-title">Остались вопросы?</div>
@@ -82,6 +83,19 @@ function modalShow() {
 </template>
 
 <style scoped lang="scss">
+
+
+.contact__map-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
+}
+
+
 section.contact {
     padding-bottom: 40px;
 
@@ -97,28 +111,50 @@ section.contact {
         .contact__map {
             display: flex;
             flex-direction: column;
-
             .contact__map-map {
-                // border-radius: var(--border-radius);
-                overflow: hidden;
+            flex: 1 1 70%;
+            height: 400px;
+            @media screen and (max-width: 1200px) {
+                margin-bottom: 200px;
             }
+            @media screen and (max-width: 1000px) {
+                margin-bottom: 200px;
+                min-height: 400px;
+            }
+            
+
+            iframe {
+                width: 230%;
+                height: 100%;
+                border: none;
+                border-radius: 8px;
+                @media screen and (max-width: 1200px) {
+                    width: 100%;
+                    height: 150%;
+                }
+            }
+            
+        }
 
             .contact__map-data {
+                flex: 1 1 50%;
+                padding: 30px 30px 30px 40px;
+                border-left: 3px solid #d02029; // красный бордер
                 display: flex;
-                column-gap: 15px;
+                flex-direction: column;
+                justify-content: center;
 
                 @media screen and (max-width:1000px) {
                     display: block;
+                    border-left: 3px solid #d02029; // красный бордер
                 }
 
                 .contact__map-data-item {
-                    font-weight: bold;
-                    line-height: normal;
-                    font-size: 18px;
                     display: flex;
                     gap: 15px;
                     align-items: center;
-                    margin-bottom: 15px;
+                    margin-bottom: 20px;
+                    font-size: 16px;
 
                 }
             }

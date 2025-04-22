@@ -21,7 +21,7 @@ const handleFormSubmit = (formData) => {
 </script>
 
 <template>
-    <BaseForm :fields="formFields" @submit="handleFormSubmit" :submit-text="`Оставить заявку`" :appType="8" />
+    <BaseForm :fields="formFields" @submit="handleFormSubmit" :submit-text="`Остав11ить заявку`" :appType="8" />
 </template>
 
 <style scoped lang="scss"></style>

@@ -1,6 +1,6 @@
 <script setup>
 import { apiNew } from "@/constants/";
-
+import  SvgStar  from '@/components/Svg/Star.vue';
 import { useAppStore } from '@/stores/AppStore.js'
 const appStore = useAppStore()
 
@@ -210,6 +210,7 @@ const car = computed(() => {
                     {{ formSend ? 'Заявка отправлена!' : 'Оставить заявку' }}
                 </button>
                 <p class="form-text">
+                    <SvgStar/>
                     Кредит предоставляется только гражданам РФ						
                 </p>
             </form>
@@ -302,22 +303,23 @@ const car = computed(() => {
     }
 }
 
-.form-text{
+  .form-text {
     color: #767676;
-    padding-left: 20px;
-    position: relative;
     font-size: 14px;
     margin-top: 15px;
-    text-align: left;
-    &::before{
-      content: "*";
-      font-size: 16px;
-      font-weight: 700;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      color: red;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px; // расстояние между звездочкой и текстом
+    padding-left: 0; // убираем отступ, чтобы выровнять по левому краю
+    margin-left: 0;  // если вдруг был
+    width: 100%; // чтобы занять всю ширину
+
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: red;
+      margin-top: 2px;
+      flex-shrink: 0;
     }
   }
   .form__form-submit {

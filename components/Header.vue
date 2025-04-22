@@ -147,7 +147,7 @@ const modal_title="Оставьте заявку и мы перезвоним В
 .header {
     position: sticky;
     top: 0;
-    z-index: 11;
+    z-index: 999;
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
@@ -187,6 +187,7 @@ const modal_title="Оставьте заявку и мы перезвоним В
         align-items: center;
         gap: 20px;
         margin-left: auto;
+        justify-content: center;
         color: white;
 
         .header__address {
@@ -230,7 +231,7 @@ const modal_title="Оставьте заявку и мы перезвоним В
             align-items: center;
             gap: 20px;
             color: white;
-            margin-left: auto; // ✅ прижимаем весь блок вправо
+            margin-left: 0 auto; // ✅ прижимаем весь блок вправо
 
             .header__address {
                 display: flex;
@@ -238,13 +239,13 @@ const modal_title="Оставьте заявку и мы перезвоним В
                 color: white;
                 width: max-content;
                 line-height: 16px;
-                @media screen and (max-width:570px) {
-                    display: none;
-                }
+                
+
                 .phone {
                     @media screen and (max-width:767px) {
                         display: none;
                     }
+
                 }
 
                 img {
@@ -326,9 +327,7 @@ const modal_title="Оставьте заявку и мы перезвоним В
         top: 60px;
     }
 
-    @media screen and (max-width:570px) {
-        top: 58px;
-    }
+
 }
 
 .mobile-menu__overlay.active {
@@ -388,41 +387,44 @@ const modal_title="Оставьте заявку и мы перезвоним В
 }
 
 .mob {
-    padding: 0 10px;
+    padding: 0 auto;
     display: none;
-
+    gap: 50px;
     button {
-        width: max-content;
+      width: max-content;
     }
 
     @media screen and (max-width:767px) {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%; // Добавляем высоту
     }
 
     .flex {
-        display: flex;
-        width: max-content;
-        align-items: center;
-        column-gap: 15px;
-
+      display: flex;
+      align-items: center;
+      column-gap: 15px;
+      height: 100%; // Добавляем высоту
+      justify-content: center; // Центрируем элементы
         svg {
             fill: white;
         }
 
         .phone__mob {
-            height: 100%;
-            border-left: 1px solid white;
-            border-right: 1px solid white;
-            padding: 5px 10px;
+          height: 100%;
+          display: flex;
+          align-items: center; // Центрируем по вертикали
+          border-left: 1px solid white;
+          border-right: 1px solid white;
+          padding: 0 10px; // Увеличиваем отступы
 
             .phone__svg {
-                width: 22px;
-                height: auto;
+                width: auto;
+                height: 20px;
             }
         }
-
+        
 
     }
 
@@ -480,46 +482,6 @@ const modal_title="Оставьте заявку и мы перезвоним В
 
     }
 }
-@media screen and (max-width: 570px) {
-  .mob {
-    padding: 8px 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
 
-    .flex {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      width: 100%;
-
-      svg {
-        width: 22px;
-        height: 22px;
-        flex-shrink: 0;
-      }
-
-      .phone__mob {
-        padding: 0 6px;
-        border-left: 1px solid white;
-        border-right: 1px solid white;
-      }
-
-      .base-button {
-        flex-grow: 1;
-        max-width: 160px;
-        font-size: 13px;
-        padding: 6px 8px;
-        white-space: nowrap;
-      }
-    }
-
-    .header__menu.mobile-menu {
-      font-size: 28px;
-    }
-  }
-}
 
 </style>

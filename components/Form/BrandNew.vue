@@ -93,7 +93,7 @@ const validateForm = () => {
     
                     <button type="submit" class="form__form-submit" 
                         :class="{ 'send': formSend }">
-                        {{ formSend ? 'Заявка отправлена!' : 'Оставить заявку' }}
+                        {{ formSend ? 'Заявка отправлена!' : 'Остави11ть заявку' }}
                     </button>
                 </form>
             </div>

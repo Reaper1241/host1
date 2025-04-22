@@ -196,12 +196,12 @@ section.mob{
     @media screen and (max-width: 570px) {
         display: block;  
         padding: 10px;
-        color: black;
-        margin-top: 10px;
+        color: var(--color-c);
+        margin-top: 30px;
         font-weight: 600;
         font-size: 14px;
         width: 100%;
-        border: 2px solid #D7D7D7;
+        border: 2px solid var(--color-c);
         margin-bottom: 20px;
     }
 }

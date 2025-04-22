@@ -55,13 +55,13 @@ function modalShow() {
 
 <style lang="scss" scoped>
 .trade{
-    width: 217px;
-    background-color: var(--color-d);
+    width: 187px;
+    background-color: var(--color-c);
     color: #fff;
     border: none;
     padding: 12px 20px;
-    font-size: 14px;
-    text-transform: uppercase;
+    font-size: 13px;
+
 
     @media screen and (max-width: 767px){
             width: 100%;

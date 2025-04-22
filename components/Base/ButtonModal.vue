@@ -59,8 +59,7 @@ function modalShow() {
     .credit{
         width: 187px;
         padding: 12px 20px;
-        font-size: 14px;
-        text-transform: uppercase;
+        font-size: 13px;
 
 
         @media screen and (max-width: 767px){

@@ -78,7 +78,7 @@ watch(totalSale, (newValue) => {
                                     <i class="fa-solid fa-xmark" :class="{ 'active': !salonSwitch }"></i>
                                     <i class="fa-solid fa-check" :class="{ 'active': salonSwitch }"></i>
                                 </div>
-                                <p>Госпрограмма</p>
+                                <p>Госпрогра11мма</p>
                             </div>
                             <div class="complectations-calculator__text" :class="{ 'active': salonSwitch }">
                                 <span class="text">Скидка 10% по <br> госпрограммам</span>

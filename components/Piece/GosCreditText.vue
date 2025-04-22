@@ -62,9 +62,9 @@
 
 <style lang="scss" scoped>
 .content__text {
-    box-shadow: var(--shadow-s2);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    border: 1px solid #ccc;
+    border-radius: 8px;
     padding: 15px;
     margin-bottom: 20px;
     h2 {
@@ -88,7 +88,7 @@
             padding:2px 0 0 20px;
             margin-bottom: 3px;
             &:after {
-                content: "\2714";
+                content: '\25CF';
                 display: block;
                 position: absolute;
                 left: 0;

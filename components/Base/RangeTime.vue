@@ -37,7 +37,7 @@ watch(timeList, (newTimeList, oldTimeList) => {
 <template>
     <div class="time-block" :class="class">
         <label class="timeOut" for="credit-page--time">
-            Срок кредитования 
+            Срок кредитования
             <!-- <span class="output-time">
                 {{ timeListOutputData }}
             </span> -->

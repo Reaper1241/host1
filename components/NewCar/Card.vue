@@ -70,8 +70,8 @@ carStore.galleries.unshift({ url: car.value.preview });
                     </div>
                     <div class="box-offer">
                         <p>
-                            Ваша выгода<br />до {{ makeSpaces(sale)  }}
-                            руб
+                            Ваша выгода до<br /><span class="box-offer__span">{{ makeSpaces(sale)  }}
+                            руб</span>
                         </p>
                     </div>
                 </div>
@@ -103,27 +103,27 @@ carStore.galleries.unshift({ url: car.value.preview });
                             <div class="car-attr__icon">
                                 <SvgEngine/>
                             </div>
-                            <div class="car-attr__value">{{ car.modification.power }} л.с</div>
+                            <div class="car-attr__value">Мощность {{ car.modification.power }} л.с</div>
                         </li>
                         <li class="car-attr__item">
                             <div class="car-attr__icon">
                                 <SvgClock/>
                             </div>
                             <div class="car-attr__value">
-                                {{ car.modification.consumption_combine }} л/100 км
+                                Разгон {{ car.modification.from_0_to_100 }} сек
                             </div>
                         </li>
                         <li class="car-attr__item">
                             <div class="car-attr__icon">
                                 <SvgSpeedometer/>
                             </div>
-                            <div class="car-attr__value">{{car.modification.max_speed }} км/ч</div>
+                            <div class="car-attr__value">Скорость{{car.modification.max_speed }} км/ч</div>
                         </li>
                         <li class="car-attr__item">
                             <div class="car-attr__icon">
                                 <SvgPetrolFuel/>
                             </div>
-                            <div class="car-attr__value">{{ car.modification.from_0_to_100 }} сек.</div>
+                            <div class="car-attr__value">Расход{{ car.modification.consumption_combine }}л/100км</div>
                         </li>
                     </ul>
                 </div>
@@ -171,8 +171,9 @@ carStore.galleries.unshift({ url: car.value.preview });
 
     .content-island {
         padding: 20px;
-        border: 1px solid var(--color-b);
-
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1); // тень вправо и вниз
+        border-radius: 8px;
+        
         .content-island__row {
             display: -ms-flexbox;
             display: flex;
@@ -182,7 +183,7 @@ carStore.galleries.unshift({ url: car.value.preview });
             align-items: center;
             padding: 10px 0;
             border-bottom: 1px solid #eee;
-            font-size: 14px;
+            font-size: 12px;
 
             .car-attr {
                 width: 100%;
@@ -191,7 +192,9 @@ carStore.galleries.unshift({ url: car.value.preview });
                 -ms-flex-pack: justify;
                 justify-content: space-between;
                 .car-attr__item{
-                    
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
                     margin-right: 15px;
                     .car-attr__icon{
                         margin-right: 10px;
@@ -204,7 +207,7 @@ carStore.galleries.unshift({ url: car.value.preview });
                         }
                     }
                     .car-attr__value{
-                        font-size: 14px;
+                        font-size: 10px;
                         color: #8f8f8f;
                         display: inline-block;
                         vertical-align: middle;
@@ -221,7 +224,7 @@ carStore.galleries.unshift({ url: car.value.preview });
                 .car-info__price-old {
                     margin-bottom: 3px;
                     font-size: 14px;
-                    color: #b8b8b8;
+                    color: black;
                 }
 
                 .car-info__price-value {
@@ -234,10 +237,10 @@ carStore.galleries.unshift({ url: car.value.preview });
 
             .box-offer {
                 padding: 6px 10px;
-                border: 1px solid var(--color-d);
                 color: var(--color-d);
                 font-weight: 700;
-                text-align: center;
+                
+                text-align: end;
                 position: relative;
                 p{
                     color: var(--color-d);
@@ -257,6 +260,11 @@ carStore.galleries.unshift({ url: car.value.preview });
                     opacity: 0.06;
                     z-index: 0;
                 }
+                .box-offer__span{
+                    color: var(--color-c);
+                    font-size: 16px;
+                    font-weight: 700;
+                }
             }
         }
         .car-info__button-group {
@@ -268,6 +276,7 @@ carStore.galleries.unshift({ url: car.value.preview });
             justify-content: space-between;
             
             .second__button{
+                
                 justify-self: end;
                 @media screen and (max-width:767px) {
                     width: 100%;;

@@ -1,6 +1,6 @@
 <script setup>
 import { options,  apiForm, name, birthDateMask} from "@/constants/";
-
+import  SvgStar  from '@/components/Svg/Star.vue';
 import { vMaska } from "maska/vue"
 import axios from 'axios'
 
@@ -269,6 +269,7 @@ function validateBirthDate() {
                 {{ formSend ? 'Заявка отправлена!' : 'Оставить заявку' }}
             </button>
             <p class="form-text">
+                <SvgStar/>
                 Кредит предоставляется только гражданам РФ						
             </p>
         </div>
@@ -284,8 +285,13 @@ function validateBirthDate() {
     position: relative;
     gap: 5px;
     
-    @media screen and (max-width: 540px) {
+    @media screen and (max-width: 767px) {
+        width: none;
+        max-width: 500px;
+    }
+    @media screen and (max-width: 570px) {
         gap: 10px;
+        max-width: 300px;
     }
 
     .form__form-block {
@@ -311,8 +317,9 @@ function validateBirthDate() {
 
             .car__choice-wrapper {
                 height: 100%;
-                padding: 20px 15px;
+                padding: 20px 0;
                 transition: 0.3s;
+                width: 100%;
                 .value {
                     display: flex;
                     gap: 10px;
@@ -689,23 +696,23 @@ function validateBirthDate() {
     background: rgba(95, 95, 95, 0.582);
     border-radius: 5px;
 }
-.form-text{
+  .form-text {
     color: #767676;
-    padding-left: 20px;
-    position: relative;
     font-size: 14px;
-    margin-top: 25px;
-    margin-bottom: 20px;
-    text-align: left;
-    &::before{
-      content: "*";
-      font-size: 16px;
-      font-weight: 700;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      color: red;
+    margin-top: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px; // расстояние между звездочкой и текстом
+    padding-left: 0; // убираем отступ, чтобы выровнять по левому краю
+    margin-left: 0;  // если вдруг был
+    width: 100%; // чтобы занять всю ширину
+
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: red;
+      margin-top: 2px;
+      flex-shrink: 0;
     }
   }
 
@@ -756,7 +763,7 @@ function validateBirthDate() {
   overflow: hidden;
   text-overflow: ellipsis;
   min-height: 38px;
-    min-width: 21vw;
+    min-width: 12vw;
     width: 120%;
   @media screen and (max-width: 540px) {
     width: 100%;

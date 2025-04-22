@@ -86,9 +86,11 @@ const formChecked = ref(true);
 <style scoped>
 .base-form{
     min-width: 310px;
-
     @media screen and (max-width: 1000px){
         min-width: 0px;
+    }
+    @media screen and (max-width: 570px){
+        max-width: 310px;
     }
 }
 .error {

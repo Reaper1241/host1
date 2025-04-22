@@ -3,7 +3,7 @@
 
 <template>
     <div class="container">
-      <h1>Услуги</h1>
+      <!-- <h1>Услуги</h1> -->
       <section class="section content">
         <ul class="services__list">
           <li class="services__item">
@@ -112,6 +112,10 @@
 </template>
 
 <style lang="scss" scoped>
+
+.container{
+  margin-bottom: 50px;
+}
 body.compensate-for-scrollbar {
   overflow: hidden;
 }
@@ -128,6 +132,7 @@ body.compensate-for-scrollbar {
 .fancybox-container {
   -webkit-backface-visibility: hidden;
   height: 100%;
+
   left: 0;
   outline: none;
   position: fixed;
@@ -936,7 +941,8 @@ body.compensate-for-scrollbar {
   background: #fff;
   padding: 20px;
   transition: all 0.3s ease-in-out 0s;
-  border-bottom: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 .services__item:nth-child(1):hover,
 .services__item:nth-child(3):hover {

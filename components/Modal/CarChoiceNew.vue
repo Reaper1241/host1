@@ -230,8 +230,13 @@ getModels(selectedBrand.value.id)
 
                 .current {
                     opacity: 1;
+<<<<<<< HEAD
                     background: white;
                     color: var(--color-c);
+=======
+                    background: var(--color-c);
+                    color: white;
+>>>>>>> 0f026f39a4fce428c882cd6d8f551148273c2bc7
                     cursor: pointer;
                     pointer-events: auto;
                 }
@@ -241,7 +246,10 @@ getModels(selectedBrand.value.id)
                     cursor: pointer;
                     pointer-events: auto;
                     transition: 0.3s;
+<<<<<<< HEAD
                     border:1px solid var(--color-c) ;
+=======
+>>>>>>> 0f026f39a4fce428c882cd6d8f551148273c2bc7
                 }
             }
 
@@ -286,14 +294,22 @@ getModels(selectedBrand.value.id)
                         flex-direction: column;
                         gap: 15px;
                         cursor: pointer;
+<<<<<<< HEAD
                         box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+=======
+                        background: #f5f5f5;
+                        border: 2px solid #f5f5f5;
+>>>>>>> 0f026f39a4fce428c882cd6d8f551148273c2bc7
                         border-radius: 10px;
                         padding: 15px 20px;
                         transition: 0.3s;
 
                         &:hover {
                             border: 2px solid var(--color-c);
+<<<<<<< HEAD
                             border-radius: 8px;
+=======
+>>>>>>> 0f026f39a4fce428c882cd6d8f551148273c2bc7
                             transition: 0.3s;
                         }
 
@@ -313,7 +329,10 @@ getModels(selectedBrand.value.id)
 
                     .active {
                         border: 2px solid var(--color-c);
+<<<<<<< HEAD
                         border-radius: 8px;
+=======
+>>>>>>> 0f026f39a4fce428c882cd6d8f551148273c2bc7
                     }
                 }
 
@@ -331,7 +350,12 @@ getModels(selectedBrand.value.id)
                         flex-direction: column;
                         gap: 10px;
                         cursor: pointer;
+<<<<<<< HEAD
                         box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+=======
+                        background: #f5f5f5;
+                        border: 2px solid #f5f5f5;
+>>>>>>> 0f026f39a4fce428c882cd6d8f551148273c2bc7
                         border-radius: 15px;
                         padding: 10px;
                         transition: 0.3s;
